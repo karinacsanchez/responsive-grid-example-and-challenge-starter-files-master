@@ -1,0 +1,58 @@
+<!-- FYI:
+
+Implement and use a 960px 12 column grid system using the float: left; approach. Code for your grid should go in a separate stylesheet.
+Modify the existing index.html as necessary to achieve the layout.
+Add a main.css file for any styles you need to achieve the layout. The CSS for your grid, however, should not go in this file.
+When the screen width is less than 640px, columns should take up 100% of their parent container's width, but there should continue to be padding between the card and the edge of the viewport.
+When the screen is 640px or wider, the columns should take up the correct width. So a 1-column wide column should take up 6.25% of the row.
+When the screen is wider than 1000px, the grid should stop expanding, and it should be centered in the browser window.
+
+-->
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  max-width: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+/* Clearfix */
+.row::before,
+.row::after {
+  display: table;
+  content: '';
+}
+
+.row::after {
+  clear: both;
+}
+
+.box {
+  float: left;
+}
+
+/* Gutters:
+   * Each column is padded by half-a-gutter on each side,
+   *
+   * Half a gutter is 10px, 10/960 (context) = 1.041666%
+   *
+   */
+  padding-left: 1.04166666%;
+  padding-right: 1.04166666%;
+}
+
+/* Mobile defaults */
+.box {
+  width: 100%;
+}
+
+/* Non-mobile, grid */
+@media only screen and (min-width: 640px) {
+  /* 3 columns, 3/12 in % */
+  .box {
+    width: 25%;
+  }
